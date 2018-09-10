@@ -1,0 +1,11 @@
+Package: categorical
+Version: 0.0.0.9000
+Title: A Better Type for Categorical Data
+Description: What the package does (one paragraph).
+Authors@R: c(person("Arne", "Schömann", , "arne.schoenmann@it.nrw.de", c("aut", "cre")),
+  person("Yukako", "Toko", , "ytoko@nstac.go.jp", c("aut")),
+  person("Jan", "van der Laan", , "r@eoos.dds.nl", c("aut")))
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+ByteCompile: true
