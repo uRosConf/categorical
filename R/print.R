@@ -1,4 +1,5 @@
 
+#' @export
 print.level_meta <- function(x, ...) {
   cat("Classification with ", length(x), " levels\n", sep = "")
   for (i in seq_along(x)) {

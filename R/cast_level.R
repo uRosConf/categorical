@@ -3,7 +3,7 @@
 
 #' @export
 #' 
-cast_level <- function(x, meta = attr(x, "label_meta"), level = length(meta), 
+cast_level <- function(x, meta = attr(x, "level_meta"), level = length(meta), 
     label = TRUE) {
   
   # Go recursively up the tree each time adding the labels of the next level
@@ -20,8 +20,11 @@ cast_level <- function(x, meta = attr(x, "label_meta"), level = length(meta),
   if (label) {
     m <- match(cur, meta[[level]]$id)
     if (any(is.na(m))) warning("Missing values in labels.")
-    meta[[level]]$label[m]
+    factor(meta[[level]]$label[m], 
+      levels = na.omit(unique(meta[[level]]$label)))
   } else {
-    cur
+    factor(cur, 
+      levels = na.omit(unique(meta[[level]]$id)))
   }
 }
+
