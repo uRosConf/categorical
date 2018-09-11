@@ -1,0 +1,12 @@
+---
+title: 'categorical: a better factor (especially for classifications)'
+author: "Yokako Toko (NSTAC, Japan)<br>Arne Schöman (IT.NRW Germany)<br>Jan van der Laan (CBS, Netherlands)"
+date: "September 14, 2018"
+output: ioslides_presentation
+widescreen: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
