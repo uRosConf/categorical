@@ -2,6 +2,8 @@
 
 S3method(print,classification)
 export(as_classification)
+export(as_classification_simple)
 export(cast_level)
+export(complete_classification)
 export(read_classification)
 export(save_classification)
