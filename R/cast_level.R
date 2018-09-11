@@ -1,9 +1,17 @@
 
 
-
+#' Convert classification ID to factor a specified level of classification
+#' 
+#' @param x the vector to cast
+#' @param meta an oject of type \code{\link{level_meta}}.
+#' @param level the level of the classificatio to which the variable should be
+#'   cast. 
+#' @param label return the labels of the categories. Otherwise return the 
+#'   codes. 
+#' 
 #' @export
 #' 
-cast_level <- function(x, meta = attr(x, "level_meta"), level = length(meta), 
+cast_level <- function(x, meta = attr(x, "classification"), level = length(meta), 
     label = TRUE) {
   
   # Go recursively up the tree each time adding the labels of the next level
@@ -11,7 +19,12 @@ cast_level <- function(x, meta = attr(x, "level_meta"), level = length(meta),
   if (level < length(meta)) {
     for (i in seq(length(meta), level + 1,-1)) {
       m <- match(cur, meta[[i]]$id)
-      if (any(is.na(m))) warning("Missing values in id.")
+      if (any(is.na(m) & !is.na(cur))) {
+        keys <- unique(cur[is.na(m) & !is.na(cur)])
+        example <- paste0("'", head(keys, 10), "'", collapse = ", ")
+        if (length(keys) > 10) example <- paste0(example, " ...")
+        warning(paste0("Invalid classification key in x: ", example))
+      }
       cur <- meta[[i]]$parent[m]
     }
   }
@@ -19,7 +32,7 @@ cast_level <- function(x, meta = attr(x, "level_meta"), level = length(meta),
   # Recode to labels
   if (label) {
     m <- match(cur, meta[[level]]$id)
-    if (any(is.na(m))) warning("Missing values in labels.")
+    if (any(is.na(m))) warning("Invalid classification key in x.")
     factor(meta[[level]]$label[m], 
       levels = na.omit(unique(meta[[level]]$label)))
   } else {

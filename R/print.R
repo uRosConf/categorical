@@ -1,6 +1,6 @@
 
 #' @export
-print.level_meta <- function(x, ...) {
+print.classification <- function(x, ...) {
   cat("Classification with ", length(x), " levels\n", sep = "")
   for (i in seq_along(x)) {
     cat("\n=== Level ", i, ": ", nrow(x[[i]]), " categories.\n", sep = "")
