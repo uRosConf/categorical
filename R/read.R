@@ -18,7 +18,7 @@ read_classification <- function(filename, binary = TRUE) {
   if (binary) {
     readRDS(filename)
   } else {
-    classification <- read.csv(filename, stringsAsFactors = FALSE)
+    classification <- utils::read.csv(filename, stringsAsFactors = FALSE)
     as_classification(classification)
   }
 }

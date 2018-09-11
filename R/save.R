@@ -1,11 +1,11 @@
 
 #' Save classification to file
-#' 
+#'
 #' @param classification object of type \code{classification}.
 #' @param filename the filename of the file to save to. When the extension is
-#'   '.csv' or '.CSV' the classification is saved as a CSV file. 
+#'   '.csv' or '.CSV' the classification is saved as a CSV file.
 #' @param binary save as a binary (RDS) file. Otherwise save as a CSV file.
-#' 
+#'
 #' @export
 save_classification <- function(classification, filename, binary = TRUE) {
   ext <- tools::file_ext(filename)
@@ -20,6 +20,6 @@ save_classification <- function(classification, filename, binary = TRUE) {
     saveRDS(classification, file = filename)
   } else {
     classification <- do.call(rbind, classification)
-    write.csv(classification, filename, row.names = FALSE)
+    utils::write.csv(classification, filename, row.names = FALSE)
   }
 }

@@ -10,11 +10,11 @@
 #' @details 
 #' The data.frame should contain the following columns:
 #' \describe{
-#'   \item{id} {the id of the category (cast to character)}
-#'   \item{label} {the label of the category (cast to character)}
-#'   \item{level} {the level of the classification in which the category belongs
+#'   \item{id}{the id of the category (cast to character)}
+#'   \item{label}{the label of the category (cast to character)}
+#'   \item{level}{the level of the classification in which the category belongs
 #'     (should be integer)}
-#'   \item{parent} {the id of the parent category (cast to character). Can be
+#'   \item{parent}{the id of the parent category (cast to character). Can be
 #'     omitted when \code{compute_parent = FALSE}. Should contain missing values
 #'     for categories in level 1 of the classification.}
 #' }

@@ -1,2 +1,4 @@
 ^categorical\.Rproj$
 ^\.Rproj\.user$
+^data_src$
+^gen_data.R$
