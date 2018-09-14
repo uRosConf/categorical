@@ -1,6 +1,6 @@
 ---
 title: 'categorical: a better factor (especially for classifications)'
-author: "Yokako Toko (NSTAC, Japan)<br> Arne Schöman (IT.NRW Germany)<br> Jan van der Laan (CBS, Netherlands)"
+author: "Yukako Toko (NSTAC, Japan)<br> Arne Schöman (IT.NRW Germany)<br> Jan van der Laan (CBS, Netherlands)"
 date: "September 14, 2018"
 output: ioslides_presentation
 widescreen: true
@@ -10,6 +10,24 @@ widescreen: true
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
+## factor
+
+Issues with factor:
+
+- No match between labels and codes
+- No support for hierarchical structure
+- In (production) code, codes (at different levels) are often used
+- For visualisation/tabulation/analysis labels are often more practical
+
+## Result
+
+Current result of unConf:
+
+- 'classification' object
+- Allow user to 'cast' codes to 
+    - labels
+    - higher levels
 
 ## Example classification: business actvity (NACE)
 
@@ -39,15 +57,6 @@ print(head(df))
 table(cast_level(df$activity, nace_rev2, level = 1, label = FALSE))
 ```
 
-## Add classication to variable
-
-```{r}
-df$activity <- as_categorical(df$activity, classification = nace_rev2)
-```
-
-```{r}
-table(cast_level(df$activity, level = 1, label = FALSE)) 
-```
 
 
 ## Example of use within dplyr
@@ -59,12 +68,27 @@ df %>%
   summarise(some_total = sum(some_number))
 ```
 
-## complete_classification
 
-![](schema0.jpg)
 
 ## complete_classification
 
 ![](schema.jpg)
 
 
+## To do
+
+- Code is in package that passes `R CMD check`
+- Write tests
+- Utility functions, e.g. relevel, recode
+- Different versions of labels, e.g. translations
+- ...
+
+
+## 
+
+### Thank you, organisers!
+
+### Thank you, fellow participants!
+
+### ... and thank you public for all of the suggestions that you are going to do 
+at https://github.com/uRos2018/categorical ;)
